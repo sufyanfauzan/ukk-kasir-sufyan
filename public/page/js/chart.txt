@@ -1,0 +1,106 @@
+let cart_checkout = [];
+
+function updateQuantity(id, change, maxStock) {
+    var qtyInput = document.getElementById('qty-' + id);
+    var qty = parseInt(qtyInput.value) || 0;
+    var newQty = qty + change;
+
+    if (newQty < 0) {
+        newQty = 0;
+    }
+    if (newQty > maxStock) {
+        newQty = maxStock;
+    }
+
+    qtyInput.value = newQty;
+
+    var found = false;
+    for (var i = 0; i < cart_checkout.length; i++) {
+        if (cart_checkout[i].id === id) {
+            if (newQty === 0) {
+                cart_checkout.splice(i, 1);
+            } else {
+                cart_checkout[i].qty = newQty;
+            }
+            found = true;
+            break;
+        }
+    }
+
+    if (!found && newQty > 0) {
+        cart_checkout.push({ id: id, qty: newQty });
+    }
+}
+
+document.getElementById('checkout-form').addEventListener('submit', function() {
+    document.getElementById('cart_checkout').value = JSON.stringify(cart_checkout);
+});
+
+// -
+
+var cart = @json($checkout);
+var totalHarga = {{ $total }};
+
+// state member
+var memberStatus = document.getElementById('member_status');
+    memberStatus.onchange = function() {
+        var phoneContainer = document.getElementById('phone-container');
+        var isMemberInput = document.getElementById('is-member-input');
+
+        if (memberStatus.value == 'member') {
+            phoneContainer.classList.remove('hidden');
+            isMemberInput.value = 1;
+        } else {
+            phoneContainer.classList.add('hidden');
+            isMemberInput.value = 0;
+        }
+    };
+
+// format RP
+var totalBayarInput = document.getElementById('total_bayar');
+totalBayarInput.oninput = function() {
+    var value = totalBayarInput.value.replace(/[^0-9]/g, '');
+    totalBayarInput.value = 'Rp. ' + (value ? new Intl.NumberFormat('id-ID').format(value) : '');
+};
+
+// paymnet
+var checkoutForm = document.getElementById('checkout_form');
+checkoutForm.onsubmit = function() {
+    var totalBayar = parseInt(totalBayarInput.value.replace(/[^0-9]/g, '')) || 0;
+    var noTelp = document.getElementById('phone_number').value;
+    var isMember = (memberStatus.value == 'member');
+
+    if (totalBayar < totalHarga) {
+        alert('Uang kurang, harus sama atau lebih dari total belanja');
+        return false;
+    }
+
+    if (isMember && noTelp.trim() == '') {
+        alert('No telepon wajib diisi untuk member');
+        return false;
+    }
+
+    var subTotal = 0;
+    for (var i = 0; i < cart.length; i++) {
+        subTotal = subTotal + (cart[i].qty * cart[i].price);
+    }
+
+    document.getElementById('cart-input').value = JSON.stringify(cart);
+    document.getElementById('amount-paid-input').value = totalBayar;
+    document.getElementById('sub-total-input').value = subTotal;
+    document.getElementById('no-telp-input').value = isMember ? noTelp : '';
+
+    return true;
+}
+
+// -- 
+
+var cart = @json($cart_items);
+
+// Mengisi input hidden sebelum submit form
+document.getElementById('member-form').addEventListener('submit', function(event) {
+    document.getElementById('cart-input').value = JSON.stringify(cart);
+    document.getElementById('usePointsHidden').value = document.getElementById('use_point').checked ? "1" : "0";
+});
+
+// -- 

@@ -1,0 +1,159 @@
+<!doctype html>
+<html data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+</head>
+
+<body>
+  <div class="drawer lg:drawer-open shadow-lg">
+    <!-- Sidebar -->
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-side">
+      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu text-base-content min-h-full w-80 p-6 space-y-4">
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Dashboard</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Produk</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Penjualan</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="drawer-content flex flex-col">
+      <!-- Navbar -->
+      <div class="navbar bg-base-100 shadow-md w-full p-4 flex items-center justify-between">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-1"></div>
+
+        <!-- Dropdown -->
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="User Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg">
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 bg-base-200 flex-grow">
+        <div class="breadcrumbs text-sm">
+          <ul>
+            <li>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                  <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                  <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                </svg>
+              </a>
+            </li>
+            <li class="font-bold"><a href="#">Dashboard</a></li>
+            <li class="font-bold text-gray-400"><a>Dashboard</a></li>
+          </ul>
+        </div>
+        <h1 class="text-4xl font-bold mt-2">DASHBOARD</h1>
+
+        <p class="text-2xl font-semibold mt-2">Selamat datang di dashboard!</p>
+        <div class="grid grid-cols-6 gap-4 mt-8">
+          <div class="shadow-lg rounded-lg p-4 col-span-4 flex flex-col items-center">
+            <h2 class="text-lg font-semibold text-center">Grafik Penjualan Harian</h2>
+            <canvas id="salesChart" class="w-full h-[50px]"></canvas>
+          </div>
+
+          <div class="shadow-lg rounded-lg p-4 col-span-2 flex flex-col items-center">
+            <h2 class="text-lg font-semibold text-center">Penjualan Produk</h2>
+            <canvas id="productChart" class="w-full h-[50px]"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // dummy bar
+    var dates = ['2023-01-01', '2023-01-02', '2023-01-03', '2023-01-04', '2023-01-05'];
+    var totals = [120, 150, 200, 170, 190];
+
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var salesChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Jumlah Transaksi',
+          data: totals,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // dummy pie
+    var product_names = ['Produk A', 'Produk B', 'Produk C', 'Produk D', 'Produk E'];
+    var product_qty = [50, 80, 120, 60, 40];
+
+    var ctx2 = document.getElementById('productChart').getContext('2d');
+    var productChart = new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: product_names,
+        datasets: [{
+          label: 'Jumlah Terjual',
+          data: product_qty,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Kasir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .logo {
+            text-align: right;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tfoot th {
+            text-align: right;
+        }
+
+        .notes {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        address {
+            margin-top: 20px;
+            font-size: 14px;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Invoice - #12345</h1>
+    <p>Member Status : John Doe</p>
+    <p>No. HP : 08123456789</p>
+    <p>Bergabung Sejak : 01 Januari 2023</p>
+    <p>Point Member : 1500</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Sub total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Produk A</td>
+                <td>Rp. 50.000</td>
+                <td>2</td>
+                <td>Rp. 100.000</td>
+            </tr>
+            <tr>
+                <td>Produk B</td>
+                <td>Rp. 75.000</td>
+                <td>1</td>
+                <td>Rp. 75.000</td>
+            </tr>
+            <tr>
+                <td>Produk C</td>
+                <td>Rp. 120.000</td>
+                <td>3</td>
+                <td>Rp. 360.000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="3">Poin digunakan</th>
+                <td>200</td>
+            </tr>
+            <tr>
+                <th colspan="3">Tunai</th>
+                <td>Rp. 500.000</td>
+            </tr>
+            <tr>
+                <th colspan="3">Kembalian</th>
+                <td>Rp. 85.000</td>
+            </tr>
+            <tr>
+                <th colspan="3">Total</th>
+                <td>Rp. 450.000</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="notes">
+        Terima kasih atas pembelian Anda.
+    </div>
+    <hr>
+    <address>
+        MoyyStore<br>
+        Alamat: SMK Wikrama Bogor<br>
+        Email: moyybusiness@gmail.com
+    </address>
+</body>
+
+</html>

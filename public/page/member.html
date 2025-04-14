@@ -1,0 +1,155 @@
+<!doctype html>
+<html data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+</head>
+
+<body>
+  <div class="drawer lg:drawer-open shadow-lg">
+    <!-- Sidebar -->
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-side">
+      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu text-base-content min-h-full w-80 p-6 space-y-4">
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Dashboard</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Produk</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Penjualan</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="drawer-content flex flex-col">
+      <!-- Navbar -->
+      <div class="navbar bg-base-100 shadow-md w-full p-4 flex items-center justify-between">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-1"></div>
+
+        <!-- Dropdown -->
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="User Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg">
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 bg-base-200 flex-grow">
+        <div class="breadcrumbs text-sm">
+          <ul>
+            <li>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                  <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                  <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                </svg>
+              </a>
+            </li>
+            <li class="font-bold"><a href="#">Dashboard</a></li>
+            <li class="font-bold text-gray-400"><a>Dashboard</a></li>
+          </ul>
+        </div>
+        <h1 class="text-4xl font-bold mt-2">DASHBOARD</h1>
+
+         <!-- main -->
+        <div class="mx-auto p-5 rounded-xl shadow-md mt-8">
+
+          <div class="grid grid-cols-2 gap-8">
+              <!-- Product Table -->
+              <div class="border p-4 shadow-md">
+                  <h2 class="text-2xl font-bold">
+                      Produk yang dipilih
+                  </h2>
+                  <table class="table w-full">
+                      <thead>
+                          <tr class="border-b">
+                              <th class="text-left">Nama Produk</th>
+                              <th class="text-left">Harga</th>
+                              <th class="text-left"></th>
+                              <th class="text-left">Jumlah</th>
+                              <th class="text-left">Subtotal</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                              <tr class="border-b">
+                                  <td>Sprite</td>
+                                  <td>Rp. 5.000</td>
+                                  <td>x</td>
+                                  <td>1</td>
+                                  <td>Rp. 5.000</td>
+                              </tr>
+
+                      </tbody>
+                  </table>
+
+                  <div class="mt-4 font-semibold text-lg text-right">
+                      <p>Total Harga : Rp. 5.000</p>
+                      <p>Tunai : Rp. 10.000</p>
+                  </div>
+              </div>
+
+              <!-- Member Form -->
+              <div>
+                  <form id="member-form">
+                      <label class="block">Nama Member</label>
+                      <input type="text" class="w-full">
+                      {{-- <input type="text" name="member_name" value="{{ $member_name ?? '' }}" class="input input-bordered w-full" {{ $member_name ? 'readonly' : '' }}> --}}
+
+                      <label class="block mt-4">Total Points</label>
+                      {{-- <input type="text" value="{{ $point_total }}" disabled class="input input-bordered w-full bg-gray-200"> --}}
+
+                      
+                      <div class="mt-3 flex items-center">
+                          <input type="checkbox" id="use_point" class="checkbox checkbox-primary mr-2"
+                          {{-- {{ $can_use_point ? '' : 'disabled' }} --}}
+                          >
+                          <label for="use_point" class="text-gray-700">
+                              {{-- Gunakan Point
+                              @if (!$can_use_point)
+                              <span class="text-red-500">Poin tidak dapat digunakan pada pembelanjaan pertama.</span>
+                              @endif --}}
+                          </label>
+                          <input type="hidden" name="use_point" id="usePointsHidden" value="0">
+                      </div>
+                      
+                      <input type="hidden" name="total_point">
+                      <input type="hidden" name="cart" id="cart-input">
+                      <input type="hidden" name="sub_total">
+                      <input type="hidden" name="amount_paid"">
+                      <input type="hidden" name="phone_number">
+
+                      <button type="submit" class="mt-4 btn btn-primary w-full">Next</button>
+                  </form>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

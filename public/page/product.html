@@ -1,0 +1,113 @@
+<!doctype html>
+<html data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite('resources/css/app.css')
+</head>
+
+<body>
+  <div class="drawer lg:drawer-open shadow-lg">
+    <!-- Sidebar -->
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-side">
+      <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+      <ul class="menu text-base-content min-h-full w-80 p-6 space-y-4">
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Dashboard</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Produk</a>
+        </li>
+        <li>
+          <a href="#" class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Penjualan</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="drawer-content flex flex-col">
+      <!-- Navbar -->
+      <div class="navbar bg-base-100 shadow-md w-full p-4 flex items-center justify-between">
+        <div class="flex-none lg:hidden">
+          <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-6 w-6 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+        </div>
+
+        <!-- Spacer -->
+        <div class="flex-1"></div>
+
+        <!-- Dropdown -->
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="User Avatar" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg">
+            <li><a>Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 bg-base-200 flex-grow">
+        <div class="breadcrumbs text-sm">
+          <ul>
+            <li>
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                  <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                  <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+                </svg>
+              </a>
+            </li>
+            <li class="font-bold"><a href="#">Dashboard</a></li>
+            <li class="font-bold text-gray-400"><a>Dashboard</a></li>
+          </ul>
+        </div>
+        <h1 class="text-4xl font-bold mt-2">DASHBOARD</h1>
+
+         <!-- main -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+
+          <div class="card shadow-xl p-4">
+              <figure>
+                  <img src="#" class="w-full h-50 object-cover">
+              </figure>
+              <div class="card-body">
+                  <h2 class="card-title">
+                      Sprite
+                  </h2>
+                  <p>Stok: 
+                      1
+                  </p>
+                  <p>Rp. 
+                    5.000
+                  </p>
+
+                  <div class="flex items-center space-x-2">
+                      {{-- <button onclick="updateQuantity({{ $product->id }}, -1, {{ $product->stock }})" class="btn btn-sm btn-outline">-</button>
+                      <input type="number" id="qty-{{ $product->id }}" value="0" class="input input-bordered w-12 text-center" readonly>
+                      <button onclick="updateQuantity({{ $product->id }}, 1, {{ $product->stock }})" class="btn btn-sm btn-outline">+</button> --}}
+                  </div>
+              </div>
+          </div>
+
+        </div>
+
+        <form id="checkout-form">
+            <input type="hidden" name="cart_checkout" id="cart_checkout">
+            <button type="submit" class="btn btn-success w-full mt-4">Selanjutnya</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
