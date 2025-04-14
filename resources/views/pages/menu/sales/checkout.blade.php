@@ -17,10 +17,10 @@
                     </svg>
                 </a>
             </li>
-            <li class="font-bold text-gray-400"><a>Penjualan</a></li>
+            <li class="font-bold text-gray-400"><a>Sale</a></li>
         </ul>
     </div>
-    <h1 class="text-4xl font-bold mt-2">PENJUALAN</h1>
+    <h1 class="text-4xl font-bold mt-2">SALE</h1>
 
     <!-- main -->
     <div class="mx-auto p-5 rounded-xl shadow-md mt-8">
