@@ -38,7 +38,9 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Action</th>
+                    @if (Auth::user()->role === 'admin')
+                        <th>Action</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +51,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->role }}</td>
+                        @if (Auth::user()->role === 'admin')
                         <th>
                             <a href="{{ route('users.edit', $item['id']) }}"
                                 class="btn btn-warning btn-sm text-white">Edit</a>
@@ -69,6 +72,7 @@
                                 </div>
                             </div>
                         </th>
+                        @endif
                     </tr>
                 @endforeach
 
