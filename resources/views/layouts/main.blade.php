@@ -26,10 +26,12 @@
                     <a href="{{ route('sales.index') }}"
                         class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Sale</a>
                 </li>
+                @if (Auth::user()->role === 'admin')
                 <li>
                     <a href="{{ route('users.index') }}"
                         class="text-lg font-semibold py-2 px-4 rounded-lg hover:bg-base-300 transition duration-300">Users</a>
                 </li>
+                @endif
             </ul>
         </div>
 
